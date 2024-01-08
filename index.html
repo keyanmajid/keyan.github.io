@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .heading{
+            text-align: center;
+            color: azure;
+            width: 100%;
+        }
+       
+:root {
+  --dur: all 550ms ease-in-out; 
+  --dur-a: all 650ms ease-in-out;
+  --dur-b: all 750ms ease-in-out;
+}
+
+
+.container {
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  grid-gap:20px;
+  padding:20px;
+  box-sizing:border-box;
+}
+.item1 {
+  background-color:  #2d3436;
+    background-image: linear-gradient(315deg,#2d3436 0%,#000000 74%);
+  height:400px;
+  position:relative;
+  border-radius:15px;
+  padding:30px;
+  box-sizing:border-box;
+  color:#fff;
+  cursor: pointer;
+}
+.card1 {
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  margin:auto;
+  z-index:10;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  border-radius:15px;
+  -webkit-transition: var(--dur);
+  -moz-transition: var(--dur);
+  -ms-transition: var(--dur);
+  -o-transition: var(--dur);
+  transition: var(--dur);
+  clip-path: circle(100.0% at 50% 50%);
+}
+.card1 img {
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  margin:auto;
+  z-index:10;
+  height:100%;
+  width:auto;
+  max-width:9999px;
+  overflow:hidden;
+  border-radius:15px;
+  -webkit-transition: var(--dur);
+  -moz-transition: var(--dur);
+  -ms-transition: var(--dur);
+  -o-transition: var(--dur);
+  transition: var(--dur);
+  clip-path: circle(100.0% at 50% 50%);
+}
+.item1:hover .card  img{
+  clip-path: circle(0.0% at 50% 50%);
+}
+.circle {
+  background:#2d3436;
+  max-width:100%;
+  height:100%;
+  position:absolute;
+  z-index:2;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  margin:auto;
+  -webkit-transition: var(--dur-a);
+  -moz-transition: var(--dur-a);
+  -ms-transition: var(--dur-a);
+  -o-transition: var(--dur-a);
+  transition: var(--dur-a);
+  clip-path: circle(100.0% at 50% 50%);
+}
+.circle2 {
+  background:#423a29c9;
+  -webkit-transition: var(--dur-b);
+  -moz-transition: var(--dur-b);
+  -ms-transition: var(--dur-b);
+  -o-transition: var(--dur-b);
+  transition: var(--dur-b);
+  clip-path: circle(100.0% at 50% 50%);
+}
+.item1:hover .card1  img {
+  clip-path: circle(0.0% at 50% 50%);
+}
+.item1:hover .card1  .circle {
+  clip-path: circle(0.0% at 75% 60%);
+}
+.item1:hover .card1  .circle2 {
+  clip-path: circle(0.0% at 35% 20%);
+}
+.image img {
+  max-width:100%;
+  position:absolute;
+  z-index:3;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  margin:auto;
+}
+.content1 {
+  position:relative;
+  z-index:0;
+  display:flex;
+  align-items:center;
+  height:100%;
+}
+
+.container1{
+            position: relative;
+            width: 1100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 30px;
+        }
+        .container1 .card4{
+            position: relative;
+            max-width: 300px;
+            height: 215px;
+            background: #fff;
+            margin: 30px 10px;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            transition: 0.3s ease-in-out;
+        }
+        .container1 .card4:hover{
+            height: 420px;
+        }
+        .container1 .card4 .imgbx{
+            position: relative;
+            width: 260px;
+            height: 260px;
+            top: -60px;
+            left: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+
+
+        }
+        .container1 .card4 .imgbx img{
+            max-width: 100%;
+            border-radius: 4px;
+        }
+        .container1 .card4 .content3{
+            position: relative;
+            margin-top: -140px;
+            padding: 10px 15px;
+            text-align: center;
+            color: #111;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s ease-in-out;
+        }
+        .container1 .card4:hover .content3{
+            visibility: visible;
+            opacity: 1;
+            margin-top: -40px;
+            transition-delay: 0.3s;
+        }
+
+
+
+
+        .footer {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 30px 30px 20px 30px;
+  color: #f8f8f8;
+  background-color:  #2d3436;
+        background-image: linear-gradient(315deg,#2d3436 0%,#000000 74%);
+  border-top: 1px solid #e5e5e5;
+}
+
+.footer > * {
+  flex:  1 100%;
+}
+
+.footer__addr {
+  margin-right: 1.25em;
+  margin-bottom: 2em;
+}
+
+.footer__logo {
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+  text-transform: lowercase;
+  font-size: 1.5rem;
+}
+
+.footer__addr h2 {
+  margin-top: 1.3em;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.nav__title {
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.footer address {
+  font-style: normal;
+  color: #999;
+}
+
+.footer__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  max-width: max-content;
+  background-color: rgb(33, 33, 33, 0.07);
+  border-radius: 100px;
+  color: #2f2f2f;
+  line-height: 0;
+  margin: 0.6em 0;
+  font-size: 1rem;
+  padding: 0 1.3em;
+}
+
+.footer ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer li {
+  line-height: 2em;
+}
+
+.footer a {
+  text-decoration: none;
+}
+
+.footer__nav {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.footer__nav > * {
+  flex: 1 50%;
+  margin-right: 1.25em;
+}
+
+.nav__ul a {
+  color: #999;
+}
+
+.nav__ul--extra {
+  column-count: 2;
+  column-gap: 1.25em;
+}
+
+.legal {
+  display: flex;
+  flex-wrap: wrap;
+  color: #999;
+}
+  
+.legal__links {
+  display: flex;
+  align-items: center;
+}
+
+.heart {
+  color: #2f2f2f;
+}
+
+@media screen and (min-width: 24.375em) {
+  .legal .legal__links {
+    margin-left: auto;
+  }
+}
+
+@media screen and (min-width: 40.375em) {
+  .footer__nav > * {
+    flex: 1;
+  }
+  
+  .nav__item--extra {
+    flex-grow: 2;
+  }
+  
+  .footer__addr {
+    flex: 1 0px;
+  }
+  
+  .footer__nav {
+    flex: 2 0px;
+  }
+}
+
+
+::-webkit-scrollbar{
+      width: 15px;
+     }
+     ::-webkit-scrollbar-track{
+      background: #100f10;
+     }
+     ::-webkit-scrollbar-thumb{
+        background-image: linear-gradient(315deg,#3c4446 0%,#1b1a1a 74%);
+      
+     }
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="slider.html">LANDING</a>
+            <a href="index.html">Home</a>
+            <a href="aboutus.html">ABOUT US</a>
+            <a href="login.html">CONTACT US</a>
+            <a href="contact.html">SIGN UP</a>
+           
+        </nav>
+    </header>
+
+    <!-- carousel -->
+    <div class="carousel">
+        <!-- list item -->
+        <div class="list">
+            <div class="item">
+                <img src="HOME IMAGES/avengers.jpg">
+                <div class="content">
+                    <div class="author">MARVEL</div>
+                    <div class="title">AVENGERS ENDGAME</div>
+                    <div class="topic">ACTION</div>
+                    <div class="des">
+                        <!-- lorem 50 -->
+                        AVENGERS: ENDGAME is set after Thanos' catastrophic use of the Infinity Stones randomly wiped out half of Earth's population in Avengers: Infinity War. Those left behind are desperate to do something -- anything -- to bring back their lost loved ones.
+                    </div>
+                    <div class="buttons">
+                        <button>WATCH</button>
+                        <button>DOWNLOAD</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="HOME IMAGES/hacksaw.jpg">
+                <div class="content">
+                    <div class="author">LUNDEV</div>
+                    <div class="title">HACKSAW RIDGE</div>
+                    <div class="topic">WAR</div>
+                    <div class="des">
+                      HACKSAW RIDGE is the extraordinary true story of WWII medic Desmond Doss, played by Andrew Garfield (The Amazing Spiderman), who, in Okinawa during the bloodiest battle of WWII, miraculously saved 75 men in a matter of hours without firing or carrying a gun.
+                    </div>
+                    <div class="buttons">
+                      <button>WATCH</button>
+                      <button>DOWNLOAD</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="HOME IMAGES/spiderman.jpg">
+                <div class="content">
+                    <div class="author">MARVEL</div>
+                    <div class="title">SPIDERMAN NO WAY HOME </div>
+                    <div class="topic">ACTION-ADVENTURE</div>
+                    <div class="des">
+                      Peter Parker's secret identity is revealed to the entire world. Desperate for help, Peter turns to Doctor Strange to make the world forget that he is Spider-Man. The spell goes horribly wrong and shatters the multiverse, bringing in monstrous villains that could destroy the world. The Multiverse Unleashed.
+                    </div>
+                    <div class="buttons">
+                      <button>WATCH</button>
+                      <button>DOWNLOAD</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="HOME IMAGES/blade runner.jpg">
+                <div class="content">
+                    <div class="author">LUNDEV</div>
+                    <div class="title">BLADE RUNNER</div>
+                    <div class="topic">POST-APOCOLYPTIC</div>
+                    <div class="des">
+                      In 2049, 30 years after the events of Blade Runner, bioengineered humans known as replicants are slaves. K (short for serial number, KD6-3.7), a Nexus-9 replicant, works for the Los Angeles Police Department (LAPD) as a "blade runner", an officer who hunts and "retires" (kills) rogue replicants.
+                    </div>
+                    <div class="buttons">
+                      <button>WATCH</button>
+                      <button>DOWNLOAD</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="item">
+              <img src="HOME IMAGES/peakpx.jpg">
+              <div class="content">
+                  <div class="author">WARNER BROS</div>
+                  <div class="title">OPPENHEIMER</div>
+                  <div class="topic">SCI FI</div>
+                  <div class="des">
+                    J. Robert Oppenheimer (1904-1967) was an American theoretical physicist. During the Manhattan Project, Oppenheimer was director of the Los Alamos Laboratory and responsible for the research and design of an atomic bomb. He is often known as the “father of the atomic bomb.”
+                  </div>
+                  <div class="buttons">
+                    <button>WATCH</button>
+                    <button>DOWNLOAD</button>
+                  </div>
+              </div>
+          </div>
+
+
+
+          <div class="item">
+            <img src="HOME IMAGES/1917.jpg">
+            <div class="content">
+                <div class="author">WARNER BROS</div>
+                <div class="title">1917</div>
+                <div class="topic">WAR</div>
+                <div class="des">
+                  ONE SHOT, ONE WAR, ONE INDELIBLE TAKE
+                  Two young British soldiers during the First World War are given an impossible mission: deliver a message deep in enemy territory that will stop 1,600 men, and one of the soldiers' brothers, from walking straight into a deadly trap.
+                </div>
+                <div class="buttons">
+                  <button>WATCH</button>
+                  <button>DOWNLOAD</button>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="item">
+          <img src="HOME IMAGES/spiderman miles.jpg">
+          <div class="content">
+              <div class="author">SONY</div>
+              <div class="title">ACROSS THE SPIDERVERSE</div>
+              <div class="topic">ANIMATED</div>
+              <div class="des">
+                Miles Morales returns once again to save the multiverse! After being reunited with Gwen Stacy, Miles races across the multiverse to try and defeat a powerful foe known as the Spot. He meets many other spider people. But Miguel O'Hara doesn't approve of Miles' actions to save everyone, following canon events.
+              </div>
+              <div class="buttons">
+                <button>WATCH</button>
+                <button>DOWNLOAD</button>
+              </div>
+          </div>
+      </div>
+
+
+
+        </div>
+        <!-- list thumnail -->
+        <div class="thumbnail">
+            <div class="item">
+                <img src="HOME IMAGES/avengers.jpg">
+                <div class="content">
+                    <div class="title">
+                        AVENGERS ENDGAME
+                    </div>
+                    <div class="description">
+                       ACTION
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="HOME IMAGES/hacksaw.jpg">
+                <div class="content">
+                    <div class="title">
+                        HACKSAW RIDGE
+                    </div>
+                    <div class="description">
+                        WAR
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="HOME IMAGES/spiderman.jpg">
+                <div class="content">
+                    <div class="title">
+                        SPIDERMAN NOWAY HOME
+                    </div>
+                    <div class="description">
+                        ACTION-ADVENTURE
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="HOME IMAGES/blade runner.jpg">
+                <div class="content">
+                    <div class="title">
+                        BLADE RUNNER
+                    </div>
+                    <div class="description">
+                        POST-APOCOLYPTIC
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="item">
+              <img src="HOME IMAGES/peakpx.jpg">
+              <div class="content">
+                  <div class="title">
+                      OPPENHEIMER
+                  </div>
+                  <div class="description">
+                      SCIFI
+                  </div>
+              </div>
+          </div>
+
+
+          <div class="item">
+            <img src="HOME IMAGES/1917.jpg">
+            <div class="content">
+                <div class="title">
+                    1917
+                </div>
+                <div class="description">
+                    WAR
+                </div>
+            </div>
+        </div>
+
+
+        <div class="item">
+          <img src="HOME IMAGES/spiderman miles.jpg">
+          <div class="content">
+              <div class="title">
+                  SPIDER-MAN ACROSS THE SPIDERVERSE
+              </div>
+              <div class="description">
+                  ANIMATED
+              </div>
+          </div>
+      </div>
+
+        </div>
+        <!-- next prev -->
+
+        <div class="arrows">
+            <button id="prev"><</button>
+            <button id="next">></button>
+        </div>
+        <!-- time running -->
+        <div class="time"></div>
+    </div>
+<div class="heading">
+    <h1>MOST POPULAR</h1>
+</div>
+
+<div class="row">
+
+
+    <div class="container">
+        <div class="item1">
+          <div class="card1">
+            <div class="circle circle2"></div>
+            <div class="circle circle1"></div>
+           <div class="image"> <img src="HOME IMAGES/godfathr.jpg" /></div>
+          </div>
+          <div class="content1">
+            <H1>GODFATHER</H1>
+            <p>The Godfather is set in the 1940s and takes place entirely within the world of the Corleones, a fictional New York Mafia family. It opens inside the dark office of the family patriarch, Don Vito Corleone (also known as the Godfather and played by Brando), on the wedding day of his daughter, Connie (Talia Shire).</p>
+          </div>
+        </div>
+        <div class="item1">
+          <div class="card1">
+            <div class="circle circle2"></div>
+            <div class="circle circle1"></div>
+           <div class="image"><img src="HOME IMAGES/infinity.jpg" /></div> 
+          </div>
+          <div class="content1">
+            <H1>AVENGERS INFINITY WAR</H1>
+            <p>The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.
+            </p>
+          </div>
+        </div>
+        <div class="item1">
+          <div class="card1">
+            <div class="circle circle2"></div>
+            <div class="circle circle1"></div>
+          <div class="image"> <img src="HOME IMAGES/kung fu panda.jpg" /></div> 
+          </div>
+          <div class="content1">
+            <H1>KUNG FU PANDA</H1>
+            <p>This movie follows the story of Po (voice of Jack Black), a Panda who works in his father's noodle shop, but dreams of becoming a Kung Fu champion. When Po learns that the village is hosting a tournament to nominate a Dragon Warrior, he makes his way to the Jade Palace to watch the festivities.</p>
+          </div>
+        </div>
+      </div>
+      
+
+    
+</div>
+
+
+<div class="row">
+
+
+    <div class="container">
+        <div class="item1">
+          <div class="card1">
+            <div class="circle circle2"></div>
+            <div class="circle circle1"></div>
+           <div class="image"> <img src="HOME IMAGES/justice league.jpg" /></div>
+          </div>
+          <div class="content1">
+            <H1>JUSTICE LEAGUE</H1>
+      <p>The World's Greatest Super Heroes, the Justice League has endured many roster changes to remain the earth's premiere team of champions. Separately, DC Super Heroes like Superman, Batman, Wonder Woman, Flash and Green Lantern are the greatest fighters for truth and justice the world has ever known.</p>
+          </div>
+        </div>
+        <div class="item1">
+          <div class="card1">
+            <div class="circle circle2"></div>
+            <div class="circle circle1"></div>
+           <div class="image"><img src="HOME IMAGES/dark knight.jpg" /></div> 
+          </div>
+          <div class="content1">
+            <H1>THE DARK KNIGHT</H1>
+            <p>The plot follows the vigilante Batman, police lieutenant James Gordon, and district attorney Harvey Dent, who form an alliance to dismantle organized crime in Gotham City. Their efforts are derailed by the Joker, an anarchistic mastermind who seeks to test how far Batman will go to save the city from chaos.</p>
+          </div>
+        </div>
+        <div class="item1">
+          <div class="card1">
+            <div class="circle circle2"></div>
+            <div class="circle circle1"></div>
+          <div class="image"> <img src="HOME IMAGES/insidious.jpg" /></div> 
+          </div>
+          <div class="content1">
+            <H1>INSIDIOUS CHAPTER 2</H1>
+            <p>The Lamberts believe that they have defeated the spirits that have haunted their family, but they soon discover that evil is not beaten so easily. In 1986, Lorraine Lambert summons demonology's Elise Rainier to help her son Josh, who is being followed by the spirit of an old woman.</p>
+          </div>
+        </div>
+      </div>
+      
+
+    
+</div>
+
+
+
+
+<div class="row">
+
+
+    <div class="container">
+        <div class="item1">
+          <div class="card1">
+            <div class="circle circle2"></div>
+            <div class="circle circle1"></div>
+           <div class="image"> <img src="HOME IMAGES/inter.jpg" /></div>
+          </div>
+          <div class="content1">
+            <H1>INTERSTELLAR</H1>
+            <p>nterstellar is about Earth's last chance to find a habitable planet before a lack of resources causes the human race to go extinct. The film's protagonist is Cooper (Matthew McConaughey), a former NASA pilot who is tasked with leading a mission through a wormhole to find a habitable planet in another galaxy. </p>
+          </div>
+        </div>
+        <div class="item1">
+          <div class="card1">
+            <div class="circle circle2"></div>
+            <div class="circle circle1"></div>
+           <div class="image"><img src="HOME IMAGES/hacksaw.jpg" /></div> 
+          </div>
+          <div class="content1">
+            <H1>HACKSAWRIDGE</H1>
+            <p>HACKSAW RIDGE is the extraordinary true story of WWII medic Desmond Doss, played by Andrew Garfield (The Amazing Spiderman), who, in Okinawa during the bloodiest battle of WWII, miraculously saved 75 men in a matter of hours without firing or carrying a gun.</p>
+          </div>
+        </div>
+        <div class="item1">
+          <div class="card1">
+            <div class="circle circle2"></div>
+            <div class="circle circle1"></div>
+          <div class="image"> <img src="HOME IMAGES/peakpx (1).jpg" /></div> 
+          </div>
+          <div class="content1">
+            <H1>AQUAMAN</H1>
+            <p>A half-Atlantean, half-human who is reluctant to be king of the undersea nation of Atlantis. He is a member of the Justice League. He possesses superhuman strength, durability, has hydrokinetic powers, can communicate with sea creatures, and can swim at supersonic speeds.</p>
+          </div>
+        </div>
+      </div>
+      
+
+    
+</div>
+
+
+<div class="row">
+
+
+    <div class="container">
+        <div class="item1">
+          <div class="card1">
+            <div class="circle circle2"></div>
+            <div class="circle circle1"></div>
+           <div class="image"> <img src="HOME IMAGES/blade runner.jpg" /></div>
+          </div>
+          <div class="content1">
+            <H1>BLADE RUNNER</H1>
+            <p>In 2049, 30 years after the events of Blade Runner, bioengineered humans known as replicants are slaves. K (short for serial number, KD6-3.7), a Nexus-9 replicant, works for the Los Angeles Police Department (LAPD) as a "blade runner", an officer who hunts and "retires" (kills) rogue replicants.</p>
+          </div>
+        </div>
+        <div class="item1">
+          <div class="card1">
+            <div class="circle circle2"></div>
+            <div class="circle circle1"></div>
+           <div class="image"><img src="HOME IMAGES/deadpool.jpg" /></div> 
+          </div>
+          <div class="content1">
+            <H1>DEADPOOL</H1>
+            <p>The untitled Deadpool film, commonly known as Deadpool 3, is an upcoming American superhero film based on the Marvel Comics character Deadpool, produced by Marvel Studios, Maximum Effort, and 21 Laps Entertainment, and distributed by Walt Disney Studios Motion Pictures.</p>
+          </div>
+        </div>
+        <div class="item1">
+          <div class="card1">
+            <div class="circle circle2"></div>
+            <div class="circle circle1"></div>
+          <div class="image"> <img src="HOME IMAGES/rocky.jpg" /></div> 
+          </div>
+          <div class="content1">
+            <H1>ROCKY 4</H1>
+            <p>After reclaiming the boxing championship title, Rocky Balboa (Sylvester Stallone) plans to retire and live with his wife, Adrian (Talia Shire). However, during an exhibition match, Rocky's friend Apollo Creed (Carl Weathers) is mercilessly beaten to death by hulking Russian newcomer Ivan Drago (Dolph Lundgren).</p>
+          </div>
+        </div>
+      </div>
+      
+
+    
+</div>
+<div class="second">
+  <CENTER><h1>TOP RATED</h1></CENTER>
+</div>
+    
+<div class="container">
+  <div class="item1">
+    <div class="card1">
+      <div class="circle circle2"></div>
+      <div class="circle circle1"></div>
+     <div class="image"> <img src="HOME IMAGES/1917.jpg" /></div>
+    </div>
+    <div class="content1"><h1>
+      1917
+    </h1>
+      <p>ONE SHOT, ONE WAR, ONE INDELIBLE TAKE
+        Two young British soldiers during the First World War are given an impossible mission: deliver a message deep in enemy territory that will stop 1,600 men, and one of the soldiers' brothers, from walking straight into a deadly trap.</p>
+    </div>
+  </div>
+  <div class="item1">
+    <div class="card1">
+      <div class="circle circle2"></div>
+      <div class="circle circle1"></div>
+     <div class="image"><img src="HOME IMAGES/avengers.jpg" /></div> 
+    </div>
+    <div class="content1">
+      <CENTER><H1>AVENGERS ENDGAME</H1></CENTER> <br>
+      <p>AVENGERS: ENDGAME is set after Thanos' catastrophic use of the Infinity Stones randomly wiped out half of Earth's population in Avengers: Infinity War. Those left behind are desperate to do something -- anything -- to bring back their lost loved ones.</p>
+    </div>
+  </div>
+  <div class="item1">
+    <div class="card1">
+      <div class="circle circle2"></div>
+      <div class="circle circle1"></div>
+    <div class="image"> <img src="HOME IMAGES/toy story.jpg" /></div> 
+    </div>
+    <div class="content1">
+      <h1>TOY STORY 3</h1>
+      <p>As Andy prepares to depart for college, Buzz, Woody, and the rest of his loyal toys are troubled about their uncertain future. Toy Story 3 is a comical adventure that lands the toys in a room full of untamed tots who can't wait to get their sticky little fingers on these "new" toys.</p>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container">
+  <div class="item1">
+    <div class="card1">
+      <div class="circle circle2"></div>
+      <div class="circle circle1"></div>
+     <div class="image"> <img src="HOME IMAGES/spiderman.jpg" /></div>
+    </div>
+    <div class="content1">
+      <H1>SPIDER-MAN NO WAY HOME</H1>
+      <p>Peter Parker's secret identity is revealed to the entire world. Desperate for help, Peter turns to Doctor Strange to make the world forget that he is Spider-Man. The spell goes horribly wrong and shatters the multiverse, bringing in monstrous villains that could destroy the world. The Multiverse Unleashed.</p>
+    </div>
+  </div>
+  <div class="item1">
+    <div class="card1">
+      <div class="circle circle2"></div>
+      <div class="circle circle1"></div>
+     <div class="image"><img src="HOME IMAGES/spiderman miles.jpg" /></div> 
+    </div>
+    <div class="content1">
+      <H1>SPIDER-MAN ACROSS THE SPIDERVERSE</H1>
+      <p>Miles Morales returns once again to save the multiverse! After being reunited with Gwen Stacy, Miles races across the multiverse to try and defeat a powerful foe known as the Spot. He meets many other spider people. But Miguel O'Hara doesn't approve of Miles' actions to save everyone, following canon events.</p>
+    </div>
+  </div>
+  <div class="item1">
+    <div class="card1">
+      <div class="circle circle2"></div>
+      <div class="circle circle1"></div>
+    <div class="image"> <img src="HOME IMAGES/peakpx.jpg" /></div> 
+    </div>
+    <div class="content1">
+      <H1>OPPENHEIMER</H1>
+      <p>J. Robert Oppenheimer (1904-1967) was an American theoretical physicist. During the Manhattan Project, Oppenheimer was director of the Los Alamos Laboratory and responsible for the research and design of an atomic bomb. He is often known as the “father of the atomic bomb.”</p>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container">
+  <div class="item1">
+    <div class="card1">
+      <div class="circle circle2"></div>
+      <div class="circle circle1"></div>
+     <div class="image"> <img src="HOME IMAGES/nemo.jpg" /></div>
+    </div>
+    <div class="content1">
+      <H1>FINDING NEMO</H1>
+      <p>It tells the story of an overprotective clownfish named Marlin (Brooks) who, along with a forgetful regal blue tang named Dory (DeGeneres), searches for his missing son Nemo (Gould). Along the way, Marlin learns to take risks and comes to terms with Nemo taking care of himself.</p>
+    </div>
+  </div>
+  <div class="item1">
+    <div class="card1">
+      <div class="circle circle2"></div>
+      <div class="circle circle1"></div>
+     <div class="image"><img src="HOME IMAGES/lego.jpg" /></div> 
+    </div>
+    <div class="content1">
+      <H1>THE LEGO MOVIE</H1>
+      <p>The LEGO Movie is a 3D animated film which follows lead character, Emmet a completely ordinary LEGO mini-figure who is identified as the most "extraordinary person" and the key to saving the Lego universe. Emmet and his friends go on an epic journey to stop the evil tyrant, Lord Business.</p>
+    </div>
+  </div>
+  <div class="item1">
+    <div class="card1">
+      <div class="circle circle2"></div>
+      <div class="circle circle1"></div>
+    <div class="image"> <img src="HOME IMAGES/justice league.jpg" /></div> 
+    </div>
+    <div class="content1">
+      <H1>JUSTICE LEAGUE</H1>
+      <p>The World's Greatest Super Heroes, the Justice League has endured many roster changes to remain the earth's premiere team of champions. Separately, DC Super Heroes like Superman, Batman, Wonder Woman, Flash and Green Lantern are the greatest fighters for truth and justice the world has ever known.</p>
+    </div>
+  </div>
+</div>
+
+
+<footer class="footer">
+  <div class="footer__addr">
+    <h1 class="footer__logo">KMOVIES</h1>
+        
+    <h2>Contact</h2>
+    
+    <address>
+      5534 Somewhere In. The World 22193-10212<br>
+          
+      <a class="footer__btn" href="mailto:example@gmail.com">Email Us</a>
+    </address>
+  </div>
+  
+  <ul class="footer__nav">
+    <li class="nav__item">
+      <h2 class="nav__title">Media</h2>
+
+      <ul class="nav__ul">
+        <li>
+          <a href="#">Online</a>
+        </li>
+
+        <li>
+          <a href="#">Print</a>
+        </li>
+            
+        <li>
+          <a href="#">Alternative Ads</a>
+        </li>
+      </ul>
+    </li>
+    
+    <li class="nav__item nav__item--extra">
+      <h2 class="nav__title">Technology</h2>
+      
+      <ul class="nav__ul nav__ul--extra">
+        <li>
+          <a href="#">Hardware Design</a>
+        </li>
+        
+        <li>
+          <a href="#">Software Design</a>
+        </li>
+        
+        <li>
+          <a href="#">Digital Signage</a>
+        </li>
+        
+        <li>
+          <a href="#">Automation</a>
+        </li>
+        
+        <li>
+          <a href="#">Artificial Intelligence</a>
+        </li>
+        
+        <li>
+          <a href="#">IoT</a>
+        </li>
+      </ul>
+    </li>
+    
+    <li class="nav__item">
+      <h2 class="nav__title">Legal</h2>
+      
+      <ul class="nav__ul">
+        <li>
+          <a href="#">Privacy Policy</a>
+        </li>
+        
+        <li>
+          <a href="#">Terms of Use</a>
+        </li>
+        
+        <li>
+          <a href="#">Sitemap</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  
+  <div class="legal">
+    <p>&copy; 2019 Something. All rights reserved.</p>
+    
+    
+  </div>
+</footer>
+    <script src="app.js"></script>
+</body>
+</html>

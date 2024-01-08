@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        *{
+            margin: 0px;
+            padding: 0px;
+            font-family: 'poppins' ,sans-serif;
+            box-sizing: border-box;
+        }
+        .logo{
+            height: 10px;
+            display: 30px;
+        }
+        .logo img{
+            height: 70px;
+            width: 100px;
+            margin-top: 0px;
+            margin-left: 0px;
+        }
+       body{
+    margin: 0;
+    background-color:  #2d3436;
+    background-image: linear-gradient(315deg,#2d3436 0%,#000000 74%);
+    color: #eee;
+    font-family: Poppins;
+    font-size: 12px;
+}
+a{
+    text-decoration: none;
+}
+header{
+    width: 1140px;
+    max-width: 80%;
+    margin: auto;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+}
+header a{
+    color: #ffffff;
+    margin-right: 40px;
+    
+}
+        .section{
+           
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            display: flex;
+        }
+        .section::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+          
+        }
+        .section .container{
+            position: relative;
+            min-width: 1100px;
+            min-height: 550px;
+            display: flex;
+            z-index: 1000;
+        }
+        .section .container .contactinfo{
+            position: absolute;
+            top: 40px;
+            width: 350px;
+            height: calc(100% - 80px);
+            background-image: linear-gradient(rgba(26, 21, 21, 0.7),rgba(26, 21, 21, 0.7)),url("HOME IMAGES/spiderman miles.jpg");
+            z-index: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
+        }
+        .section .container .contactinfo h2{
+            color: #fff;
+            font-size: 24px;
+            font-weight: 500;
+        }
+        .section .container .contactinfo .info{
+            position: relative;
+            margin: 20px 0;
+        }
+        .section .container .contactinfo .info li{
+            position: relative;
+            list-style: none;
+            display: flex;
+            margin: 20px 0;
+            cursor: pointer;
+            align-items: flex-start;
+        }
+        .section .container .contactinfo .info li span:nth-child(1){
+            width: 30px;
+            min-height: 30px;
+        }
+        .section .container .contactinfo .info li span:nth-child(1) img{
+            max-width: 100%;
+            filter: invert(1);
+            opacity: 0.5;
+        }
+        .section .container .contactinfo .info li span:nth-child(2){
+        color: #fff;
+        margin-left: 10px;
+        font-weight: 300;
+        opacity: 0.5;
+        }
+        .section .container .contactinfo .info li:hover span:nth-child(1) img,
+        .section .container .contactinfo .info li:hover span:nth-child(2){
+            opacity: 1;
+        }
+        .section .container .contactinfo .sci{
+              position: relative;
+              display: flex;
+        }
+        .section .container .contactinfo .sci li{
+                list-style: none;
+                margin-right: 15px;
+        }
+        .section .container .contactinfo .sci li a{
+                 text-decoration: none;
+        }
+        .section .container .contactinfo .sci li a img{
+            filter: invert(1);
+            opacity: 0.5;
+        }
+        .section .container .contactinfo .sci li:hover a img{
+            opacity: 1;
+        }
+        .section .container .contactform{
+            position: absolute;
+            padding: 70px 50px;
+            background-image: linear-gradient(rgba(26, 21, 21, 0.7),rgba(26, 21, 21, 0.7)),url("HOME IMAGES/inter.jpg");
+            margin-left: 150px;
+            padding-left: 250px;
+            width: calc(100% - 150px);
+            background-size: cover;
+              background-position: center;
+            height: 100%;
+            box-shadow: 0 50px 50px rgba(0, 0, 0, 0.5);
+        }
+        .section .container .contactform h2{
+            color: #fff;
+            font-size: 24px;
+            font-weight: 500;
+        }
+        .section .container .contactform .formbox{
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding-top: 30px;
+            background: transparent;
+        }
+        .section .container .contactform .formbox .inputbox{
+            position: relative;
+            margin: 0 0 35px 0;
+            background: transparent;
+        }
+        .section .container .contactform .formbox .w50{
+            width: 47%;
+            background: transparent;
+        }
+        .section .container .contactform .formbox .w100{
+            width: 100%;
+            background: transparent;
+        }
+        .section .container .contactform .formbox .inputbox input,
+        .section .container .contactform .formbox .inputbox textarea
+        {
+            resize: none;
+            width: 100%;
+            padding: 5px 0;
+            font-size: 18px;
+            font-weight: 300;
+            color: #333;
+            border: none;
+            border-bottom: 1px solid #777;
+            outline: none;
+            background: transparent;
+        }
+        .section .container .contactform .formbox .inputbox textarea{
+            min-height: 120px;
+            background: transparent;
+        }
+        .section .container .contactform .formbox .inputbox span{
+            position: absolute;
+            left: 0;
+            padding: 5px 0;
+            font-size: 18px;
+            font-weight: 300;
+            color: #333;
+            transition: 0.5s;
+            pointer-events: none;
+            background: transparent;
+        }
+        .section .container .contactform .formbox .inputbox input:focus ~ span,
+        .section .container .contactform .formbox .inputbox textarea:focus ~ span,
+        .section .container .contactform .formbox .inputbox input:valid ~ span,
+        .section .container .contactform .formbox .inputbox textarea:valid ~ span{
+            transform: translateY(-20px);
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: #ff568c;
+        }
+        .section .container .contactform .formbox .inputbox input[ type="submit"]{
+            position: relative;
+            cursor: pointer;
+            background: #0f3959;
+            color: #fff;
+            border: none;
+            max-width: 150px;
+            padding: 12px;
+            transition: 1s;
+          
+        }
+        
+        .section .container .contactform .formbox .inputbox input[ type="submit"]:hover{
+            background-color:  #2d3436;
+    background-image: linear-gradient(315deg,#2d3436 0%,#000000 74%);
+          
+        }
+        ::-webkit-scrollbar{
+      width: 15px;
+     }
+     ::-webkit-scrollbar-track{
+      background: #100f10;
+     }
+     ::-webkit-scrollbar-thumb{
+        background-color:  #2d3436;
+    background-image: linear-gradient(315deg,#2d3436 0%,#000000 74%);
+      
+     }
+     .footer1 {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+       
+            padding-top: 50px;
+           border-top: 1px solid #fff;
+            padding-bottom: 60px;
+          width: 1265px;
+        height: 130px;
+        background-color:  #100f10;
+            
+        }
+      
+        .footer1 a{
+         
+            opacity: 0.75;
+            filter: invert(1);
+            margin: 0 8px;
+        }
+        .footer1 a:hover{
+            opacity: 1;
+            filter: invert(1);
+        }
+
+
+
+
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+.footer {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 30px 30px 20px 30px;
+  color: #f8f8f8;
+  background-color:  #2d3436;
+        background-image: linear-gradient(315deg,#2d3436 0%,#000000 74%);
+  border-top: 1px solid #e5e5e5;
+}
+
+.footer > * {
+  flex:  1 100%;
+}
+
+.footer__addr {
+  margin-right: 1.25em;
+  margin-bottom: 2em;
+}
+
+.footer__logo {
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+  text-transform: lowercase;
+  font-size: 1.5rem;
+}
+
+.footer__addr h2 {
+  margin-top: 1.3em;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.nav__title {
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.footer address {
+  font-style: normal;
+  color: #999;
+}
+
+.footer__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  max-width: max-content;
+  background-color: rgb(33, 33, 33, 0.07);
+  border-radius: 100px;
+  color: #2f2f2f;
+  line-height: 0;
+  margin: 0.6em 0;
+  font-size: 1rem;
+  padding: 0 1.3em;
+}
+
+.footer ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer li {
+  line-height: 2em;
+}
+
+.footer a {
+  text-decoration: none;
+}
+
+.footer__nav {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.footer__nav > * {
+  flex: 1 50%;
+  margin-right: 1.25em;
+}
+
+.nav__ul a {
+  color: #999;
+}
+
+.nav__ul--extra {
+  column-count: 2;
+  column-gap: 1.25em;
+}
+
+.legal {
+  display: flex;
+  flex-wrap: wrap;
+  color: #999;
+}
+  
+.legal__links {
+  display: flex;
+  align-items: center;
+}
+
+.heart {
+  color: #2f2f2f;
+}
+
+@media screen and (min-width: 24.375em) {
+  .legal .legal__links {
+    margin-left: auto;
+  }
+}
+
+@media screen and (min-width: 40.375em) {
+  .footer__nav > * {
+    flex: 1;
+  }
+  
+  .nav__item--extra {
+    flex-grow: 2;
+  }
+  
+  .footer__addr {
+    flex: 1 0px;
+  }
+  
+  .footer__nav {
+    flex: 2 0px;
+  }
+}
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+          <a href="slider.html">LANDING</a>
+          <a href="index.html">Home</a>
+          <a href="aboutus.html">ABOUT US</a>
+          <a href="login.html">CONTACT US</a>
+          <a href="contact.html">SIGN UP</a>
+        </nav>
+    </header>
+    <div class="section">
+        <div class="container">
+            <div class="contactinfo">
+             <div class="text">
+                 <h2>Contact Info</h2>
+                 <ul class="info">
+                    <li>
+                     <span><img src="imG/asdsa.png"></span>
+                     <span>2912 mradowbrook road<br>
+                     los angekes, ca<br>
+                 90017</span>
+                    </li>
+                    <li>
+                     <span><img src="imG/download__2_-removebg-preview (1).png"></span>
+                     <span>lorem@ipsum.com</span>
+                    </li>
+                    <li>
+                     <span><img src="imG/download__1_-removebg-preview.png"></span>
+                     <span>310-386-1623</span>
+                    </li>
+                 </ul>
+             </div><!--text-->
+                 
+          
+            </div><!--contact info-->
+            <div class="contactform">
+             <h2>send a message </h2>
+             <div class="formbox">
+                 <div class="inputbox w50">
+                     <input type="text" name="" required>
+                     <span>First Name</span>
+                 </div>
+                 <div class="inputbox w50">
+                     <input type="text" name="" required>
+                     <span>Last Name</span>
+                 </div>
+                 <div class="inputbox w50">
+                     <input type="text" name="" required>
+                     <span>Email Address</span>
+                 </div>
+                 <div class="inputbox w50">
+                     <input type="text" name="" required>
+                     <span>Mobile Number</span>
+                 </div>
+                 <div class="inputbox w100">
+                     <textarea name="" required></textarea>
+                     <span>Write your Message here...</span>
+                 </div>
+                 <div class="inputbox w100">
+                  
+                    <input onclick="submit()" type="submit" value="send">
+                 </div>
+             </div>
+            </div><!--contactform-->
+     </div><!--container-->
+    </div>
+    
+
+
+    <footer class="footer">
+        <div class="footer__addr">
+          <h1 class="footer__logo">KMOVIES</h1>
+              
+          <h2>Contact</h2>
+          
+          <address>
+            5534 Somewhere In. The World 22193-10212<br>
+                
+            <a class="footer__btn" href="mailto:example@gmail.com">Email Us</a>
+          </address>
+        </div>
+        
+        <ul class="footer__nav">
+          <li class="nav__item">
+            <h2 class="nav__title">Media</h2>
+      
+            <ul class="nav__ul">
+              <li>
+                <a href="#">Online</a>
+              </li>
+      
+              <li>
+                <a href="#">Print</a>
+              </li>
+                  
+              <li>
+                <a href="#">Alternative Ads</a>
+              </li>
+            </ul>
+          </li>
+          
+          <li class="nav__item nav__item--extra">
+            <h2 class="nav__title">Technology</h2>
+            
+            <ul class="nav__ul nav__ul--extra">
+              <li>
+                <a href="#">Hardware Design</a>
+              </li>
+              
+              <li>
+                <a href="#">Software Design</a>
+              </li>
+              
+              <li>
+                <a href="#">Digital Signage</a>
+              </li>
+              
+              <li>
+                <a href="#">Automation</a>
+              </li>
+              
+              <li>
+                <a href="#">Artificial Intelligence</a>
+              </li>
+              
+              <li>
+                <a href="#">IoT</a>
+              </li>
+            </ul>
+          </li>
+          
+          <li class="nav__item">
+            <h2 class="nav__title">Legal</h2>
+            
+            <ul class="nav__ul">
+              <li>
+                <a href="#">Privacy Policy</a>
+              </li>
+              
+              <li>
+                <a href="#">Terms of Use</a>
+              </li>
+              
+              <li>
+                <a href="#">Sitemap</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        
+        <div class="legal">
+          <p>&copy; 2019 Something. All rights reserved.</p>
+          
+         
+        </div>
+      </footer>
+
+
+
+
+          
+    <script>
+        function submit(){
+            alert("YOUR FORM HAS BEEN SUBMITTED")
+        }
+        
+    </script>
+</body>
+</html>
