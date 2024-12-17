@@ -3,120 +3,180 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hotel Search - Amadeus API</title>
+  <title>Weather, Facts & Currency App</title>
   <style>
+    /* Same styling as provided */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       display: flex;
-      justify-content: center;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
       height: 100vh;
-      background-color: #f5f5f5;
-      margin: 0;
+      background-size: cover;
+      background-position: center;
+      padding: 20px;
     }
-    input, button {
-      padding: 10px;
-      margin: 5px;
-      width: 250px;
-    }
-    #hotelResult {
-      margin-top: 20px;
-      width: 80%;
-      max-width: 500px;
-      text-align: left;
-    }
-    .hotel-card {
-      padding: 15px;
-      margin: 5px;
-      border: 1px solid #ddd;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-    }
+
     h1 {
-      font-size: 1.8em;
+      color: #ffffff;
+      font-size: 2rem;
       margin-bottom: 20px;
-      color: #333;
     }
-    h3 {
-      color: #444;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      gap: 20px;
     }
-    p {
-      color: #555;
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 8px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 300px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    input[type="text"], button {
+      padding: 10px;
+      margin: 10px;
+    }
+
+    button {
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <h1>Hotel Search using Amadeus API</h1>
-  <input type="text" id="cityInput" placeholder="Enter city name" />
-  <button onclick="fetchHotelData()">Find Hotels</button>
+  <h1>Weather, Facts & Currency App</h1>
 
-  <div id="hotelResult"></div>
+  <input type="text" id="cityInput" placeholder="Enter city or country..." />
+  <button onclick="fetchAllData()">Get Info</button>
+  
+  <div class="container">
+    <div id="weatherResult" class="card"></div>
+    <div id="cityFact" class="card"></div>
+    <div id="currencyResult" class="card"></div>
+  </div>
 
   <script>
-    async function fetchHotelData() {
-      const city = document.getElementById("cityInput").value.trim();
-      
-      if (!city) {
-        alert("Please enter a city name.");
-        return;
-      }
+    const countryToCurrencyMap = {
+      AF: "AFN", AL: "ALL", DZ: "DZD", US: "USD", AR: "ARS",
+      AU: "AUD", BR: "BRL", CA: "CAD", CN: "CNY", FR: "EUR",
+      DE: "EUR", IN: "INR", JP: "JPY", MX: "MXN", RU: "RUB",
+      ZA: "ZAR", KR: "KRW", GB: "GBP", VN: "VND", PK:"PKR"
+    };
 
-      const apiKey = 'YOUR_AMADEUS_API_KEY'; // Replace with your actual Amadeus API Key
-      const apiUrl = `https://api.amadeus.com/v2/shopping/hotels?cityCode=${encodeURIComponent(city)}&apikey=${apiKey}`;
+    async function getWeather(city) {
+      const apiKeyGeo = '04fe12020a6f4da0af38c5f5cf06ff41'; // Replace with valid OpenCage API key
+      const geoUrl = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(city)}&key=${apiKeyGeo}`;
 
       try {
-        // First, get access token (if needed)
-        const tokenResponse = await fetch('https://api.amadeus.com/v1/security/oauth2/token', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          },
-          body: new URLSearchParams({
-            'grant_type': 'client_credentials',
-            'client_id': 'Tsr3OIjHDbSJARGJ6VWA7iRBHdlC7hcH', // Replace with your Amadeus Client ID
-            'client_secret': '4EYdYMDOpNST1PJX' // Replace with your Amadeus Client Secret
-          })
-        });
+        const geoResponse = await fetch(geoUrl);
+        const geoData = await geoResponse.json();
 
-        const tokenData = await tokenResponse.json();
-        const accessToken = tokenData.access_token;
+        if (geoData.results.length === 0) throw new Error("City not found");
 
-        // Fetch hotels data using the access token
-        const response = await fetch(apiUrl, {
-          headers: {
-            'Authorization': `Bearer ${accessToken}`
-          }
-        });
+        const { lat, lng } = geoData.results[0].geometry;
 
-        const hotelData = await response.json();
+        const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current_weather=true`;
+        const weatherResponse = await fetch(weatherUrl);
+        const weatherData = await weatherResponse.json();
 
-        if (hotelData.results && hotelData.results.length > 0) {
-          displayHotels(hotelData.results);
-        } else {
-          document.getElementById("hotelResult").innerHTML = `<p>No hotels found for ${city}. Please try another city.</p>`;
-        }
+        const temperature = weatherData.current_weather?.temperature || "N/A";
+        document.getElementById("weatherResult").innerHTML = `
+          <h3>Weather in ${city}</h3>
+          <p><strong>Temperature:</strong> ${temperature}°C</p>
+        `;
       } catch (error) {
         console.error(error);
-        document.getElementById("hotelResult").innerHTML = `<p>Error fetching hotel data. Please try again later.</p>`;
+        document.getElementById("weatherResult").innerHTML = `<p>Error fetching weather data.</p>`;
       }
     }
 
-    function displayHotels(hotels) {
-      const hotelContainer = document.getElementById("hotelResult");
-      hotelContainer.innerHTML = ''; // Clear previous results
-      hotels.forEach(hotel => {
-        hotelContainer.innerHTML += `
-          <div class="hotel-card">
-            <h3>${hotel.name}</h3>
-            <p><strong>Address:</strong> ${hotel.address}</p>
-            <p><strong>Rating:</strong> ${hotel.rating || "N/A"}</p>
-            <p><strong>Price per night:</strong> ${hotel.pricePerNight ? `$${hotel.pricePerNight}` : "Price unavailable"}</p>
-            <a href="${hotel.url}" target="_blank">View Hotel</a>
-          </div>
+    async function fetchCityFact(city) {
+      const wikiUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(city)}`;
+
+      try {
+        const response = await fetch(wikiUrl);
+        const data = await response.json();
+
+        if (data.type === 'standard') {
+          document.getElementById("cityFact").innerHTML = `
+            <h3>About ${city}</h3>
+            <p>${data.extract}</p>
+            <a href="${data.content_urls.desktop.page}" target="_blank">Read more</a>
+          `;
+        } else {
+          document.getElementById("cityFact").innerHTML = `<p>No facts found for ${city}.</p>`;
+        }
+      } catch (error) {
+        console.error(error);
+        document.getElementById("cityFact").innerHTML = `<p>Error fetching city facts.</p>`;
+      }
+    }
+
+    async function fetchCurrency(city) {
+      const apiKeyGeo = '04fe12020a6f4da0af38c5f5cf06ff41'; // OpenCage API key
+      const exchangeRateApiKey = 'bda6c1b974bd953dfd43f174'; // ExchangeRate API Key
+
+      try {
+        const geoUrl = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(city)}&key=${apiKeyGeo}`;
+        const geoResponse = await fetch(geoUrl);
+        const geoData = await geoResponse.json();
+
+        if (!geoData.results.length) throw new Error("City not found");
+
+        const countryCode = geoData.results[0].components.country_code.toUpperCase();
+        const currencyCode = countryToCurrencyMap[countryCode];
+
+        if (!currencyCode) {
+          document.getElementById("currencyResult").innerHTML = `<p>No currency info for ${city}.</p>`;
+          return;
+        }
+
+        const exchangeUrl = `https://v6.exchangerate-api.com/v6/${exchangeRateApiKey}/latest/${currencyCode}`;
+        const exchangeResponse = await fetch(exchangeUrl);
+        const exchangeData = await exchangeResponse.json();
+
+        const usdRate = exchangeData.conversion_rates?.USD || "N/A";
+        const eurRate = exchangeData.conversion_rates?.EUR || "N/A";
+
+        document.getElementById("currencyResult").innerHTML = `
+          <h3>Currency Info for ${city}</h3>
+          <p>Currency Code: ${currencyCode}</p>
+          <ul>
+            <li>1 ${currencyCode} = ${usdRate} USD</li>
+            <li>1 ${currencyCode} = ${eurRate} EUR</li>
+          </ul>
         `;
-      });
+      } catch (error) {
+        console.error(error);
+        document.getElementById("currencyResult").innerHTML = `<p>Error fetching currency data.</p>`;
+      }
+    }
+
+    function fetchAllData() {
+      const city = document.getElementById("cityInput").value;
+      if (city.trim()) {
+        getWeather(city);
+        fetchCityFact(city);
+        fetchCurrency(city);
+      } else {
+        alert("Please enter a city.");
+      }
     }
   </script>
 </body>
