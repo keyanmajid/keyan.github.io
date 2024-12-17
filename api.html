@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Search - Amadeus API</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      background-color: #f5f5f5;
+      margin: 0;
+    }
+    input, button {
+      padding: 10px;
+      margin: 5px;
+      width: 250px;
+    }
+    #hotelResult {
+      margin-top: 20px;
+      width: 80%;
+      max-width: 500px;
+      text-align: left;
+    }
+    .hotel-card {
+      padding: 15px;
+      margin: 5px;
+      border: 1px solid #ddd;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    h3 {
+      color: #444;
+    }
+    p {
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hotel Search using Amadeus API</h1>
+  <input type="text" id="cityInput" placeholder="Enter city name" />
+  <button onclick="fetchHotelData()">Find Hotels</button>
+
+  <div id="hotelResult"></div>
+
+  <script>
+    async function fetchHotelData() {
+      const city = document.getElementById("cityInput").value.trim();
+      
+      if (!city) {
+        alert("Please enter a city name.");
+        return;
+      }
+
+      const apiKey = 'YOUR_AMADEUS_API_KEY'; // Replace with your actual Amadeus API Key
+      const apiUrl = `https://api.amadeus.com/v2/shopping/hotels?cityCode=${encodeURIComponent(city)}&apikey=${apiKey}`;
+
+      try {
+        // First, get access token (if needed)
+        const tokenResponse = await fetch('https://api.amadeus.com/v1/security/oauth2/token', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: new URLSearchParams({
+            'grant_type': 'client_credentials',
+            'client_id': 'Tsr3OIjHDbSJARGJ6VWA7iRBHdlC7hcH', // Replace with your Amadeus Client ID
+            'client_secret': '4EYdYMDOpNST1PJX' // Replace with your Amadeus Client Secret
+          })
+        });
+
+        const tokenData = await tokenResponse.json();
+        const accessToken = tokenData.access_token;
+
+        // Fetch hotels data using the access token
+        const response = await fetch(apiUrl, {
+          headers: {
+            'Authorization': `Bearer ${accessToken}`
+          }
+        });
+
+        const hotelData = await response.json();
+
+        if (hotelData.results && hotelData.results.length > 0) {
+          displayHotels(hotelData.results);
+        } else {
+          document.getElementById("hotelResult").innerHTML = `<p>No hotels found for ${city}. Please try another city.</p>`;
+        }
+      } catch (error) {
+        console.error(error);
+        document.getElementById("hotelResult").innerHTML = `<p>Error fetching hotel data. Please try again later.</p>`;
+      }
+    }
+
+    function displayHotels(hotels) {
+      const hotelContainer = document.getElementById("hotelResult");
+      hotelContainer.innerHTML = ''; // Clear previous results
+      hotels.forEach(hotel => {
+        hotelContainer.innerHTML += `
+          <div class="hotel-card">
+            <h3>${hotel.name}</h3>
+            <p><strong>Address:</strong> ${hotel.address}</p>
+            <p><strong>Rating:</strong> ${hotel.rating || "N/A"}</p>
+            <p><strong>Price per night:</strong> ${hotel.pricePerNight ? `$${hotel.pricePerNight}` : "Price unavailable"}</p>
+            <a href="${hotel.url}" target="_blank">View Hotel</a>
+          </div>
+        `;
+      });
+    }
+  </script>
+</body>
+</html>
